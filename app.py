@@ -8,8 +8,13 @@ def home():
 
 @app.route('/api/cart')
 def cart():
-    # 의도적 버그 주입: 존재하지 않는 변수 참조로 인한 500 에러 발생
-    raise Exception("Critical Database Connection Failed! (의도적 장애 발생)")
+    return jsonify({
+        "status": "success",
+        "cart_items": [
+            {"id": 1, "name": "무선 키보드", "price": 45000},
+            {"id": 2, "name": "게이밍 마우스", "price": 32000}
+        ]
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
